@@ -1,22 +1,13 @@
 $(document).ready(function(){
-	function valor (argument){
-		$("#buscaCep").on("click",function(cep){
-			cep = $("#buscaCep").val();
-		});
-		return cep;
-	};
-
-	var valorCep = valor();
+	var $cep = $("#cep");
+	var $busca = $("#busca");
+	var $resultadoBusca = $("#resultadoBusca");
+	var url = "";//I will not show the url, because it is from a interview API
 
 
-	var url = ''; //I will not show the API url, because it is from a interview test
-
-
-	$("#buscaCep").on("click", function(cep){
-		var order = {
-			cep: $cep.val()
-		}
-	})
+	function clearResult(){
+		$resultadoBusca.empty();
+	}
 
 
 	$.ajax({
@@ -24,10 +15,8 @@ $(document).ready(function(){
 		url: url,
 		dataType: "JSON",
 		success: function(data){
-			$("#buscaCep").on("click",function(){
-				alert(valorCep);
-			})			
-		},
+			console.log(data);
+			},
 		error: function(){
 			alert("Error");
 		}
